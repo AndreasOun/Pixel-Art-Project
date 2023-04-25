@@ -13,4 +13,13 @@
 	margin: 1px;
 	background-color: white;
 	border: 1px solid black;
+    transition: background-color 0.3s;
+}
+
+.grid-square:hover {
+	background-color: black;
+}
+
+.grid-square.active {
+	background-color: black;
 }
