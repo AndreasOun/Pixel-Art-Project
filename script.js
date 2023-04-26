@@ -3,6 +3,9 @@ const controls = document.querySelector('#controls');
 const btn16 = document.querySelector('#btn-16');
 const btn32 = document.querySelector('#btn-32');
 const btn64 = document.querySelector('#btn-64');
+const resetButton = document.getElementById('btn-reset');
+const eraserButton = document.getElementById('btn-eraser');
+
 
 // create initial grid
 createGrid(16);
@@ -58,6 +61,20 @@ function removeGrid() {
 	});
 }
 
+resetButton.addEventListener('click', function() {
+  const squares = document.querySelectorAll('.grid-square');
+  squares.forEach(square => {
+    square.classList.remove('active');
+  });
+});
 
+eraserButton.addEventListener('click', function() {
+  const squares = document.querySelectorAll('.grid-square');
+  squares.forEach(square => {
+    if (square.classList.contains('active')) {
+      square.classList.remove('active');
+    }
+  });
+});
 
 
