@@ -8,9 +8,12 @@ const eraserButton = document.getElementById('btn-eraser');
 const colorPicker = document.getElementById('color-picker');
 const grid = document.getElementById('grid');
 const downloadButton = document.getElementById('btn-download');
+const squares = document.querySelectorAll('.grid-square');
+
 
 let eraseMode = false;
 let currentColor = '#000000'; // default color is black
+let isDrawing = false;
 
 // create initial grid
 createGrid(16);
@@ -56,14 +59,29 @@ function createGrid(size) {
     // add event listener to each grid square
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach((square) => {
-      square.addEventListener('mouseover', () => {
+      square.addEventListener('mousedown', (event) => {
+          isDragging = true;
           if (eraseMode) {
-              square.style.backgroundColor = 'white';
+            square.style.backgroundColor = 'white';
           } else {
-              square.style.backgroundColor = currentColor;
+            square.style.backgroundColor = currentColor;
+          }
+          lastSquare = square;
+      });
+      square.addEventListener('mousemove', (event) => {
+          if (isDragging && square != lastSquare) {
+              if (eraseMode) {
+                  square.style.backgroundColor = 'white';
+              } else {
+                  square.style.backgroundColor = currentColor;
+              }
+              lastSquare = square;
           }
       });
-  });
+      square.addEventListener('mouseup', () => {
+          isDragging = false;
+      });
+    });
 }
 
 // function to remove old grid
@@ -95,8 +113,6 @@ colorPicker.addEventListener('click', () => {
   colorInput.click();
 });
 
-
-
 function downloadImage() {
   const canvas = document.createElement('canvas');
   const size = parseInt(container.style.width);
@@ -122,4 +138,3 @@ function downloadImage() {
 
 downloadButton.addEventListener('click', downloadImage);
 
-console.log(downloadImage)
