@@ -123,8 +123,8 @@ function downloadImage() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   const squares = document.querySelectorAll('.grid-square');
   squares.forEach((square) => {
-    const x = square.offsetLeft;
-    const y = square.offsetTop;
+    const x = square.offsetLeft - container.offsetLeft;
+    const y = square.offsetTop - container.offsetTop;
     const color = window.getComputedStyle(square).backgroundColor;
     ctx.fillStyle = color;
     ctx.fillRect(x, y, square.offsetWidth, square.offsetHeight);
