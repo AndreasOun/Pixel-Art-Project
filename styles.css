@@ -42,10 +42,11 @@ h1.pixel-art-header {
     margin-right: 20px;
     margin-left: 20px; /* add margin-left to align with buttons */
     margin-bottom: 50px;
-    width: 960px;
-    height: 960px;
+    width: 600px;
+    height: 600px;
     border: 1px solid black;
 }
+
 
 
 .grid-square {
@@ -80,6 +81,7 @@ h1.pixel-art-header {
 }
 
 #controls button {
+    font-family: 'Press Start 2P', cursive; ;
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -100,6 +102,8 @@ h1.pixel-art-header {
     font-size: 16px;
     font-weight: bold;
   }
+
+
 
 #footer {
     background-color: #333;
@@ -137,11 +141,15 @@ input[type="color"] {
   }
 
 
-@media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) {
     #container {
-        width: 100%;
-        height: auto;
-        max-width: 600px;
-        max-height: 600px;
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+      max-height: 600px;
     }
-}
+    .grid-square {
+      width: calc(100% / 16);
+      height: calc(100% / 16);
+    }
+  }
