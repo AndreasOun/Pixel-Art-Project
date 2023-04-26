@@ -68,13 +68,15 @@ resetButton.addEventListener('click', function() {
   });
 });
 
-eraserButton.addEventListener('click', function() {
+function eraseSquare() {
   const squares = document.querySelectorAll('.grid-square');
-  squares.forEach(square => {
-    if (square.classList.contains('active')) {
-      square.classList.remove('active');
-    }
+  squares.forEach((square) => {
+      square.addEventListener("mouseover", () => {
+          square.style.backgroundColor = "white";
+      });
   });
+}
+
+eraserButton.addEventListener("click", () => {
+  eraseSquare();
 });
-
-
