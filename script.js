@@ -6,6 +6,7 @@ const btn64 = document.querySelector('#btn-64');
 const resetButton = document.getElementById('btn-reset');
 const eraserButton = document.getElementById('btn-eraser');
 
+let eraseMode = false;
 
 // create initial grid
 createGrid(16);
@@ -47,13 +48,16 @@ function createGrid(size) {
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach((square) => {
       square.addEventListener('mouseover', () => {
-        square.classList.add('active');
+        if (eraseMode) {
+          square.style.backgroundColor = 'white';
+        } else {
+          square.style.backgroundColor = 'black';
+        }
       });
     });
-  }
+}
+
 // function to remove old grid
-
-
 function removeGrid() {
 	const squares = document.querySelectorAll('.grid-square');
 	squares.forEach(square => {
@@ -64,19 +68,11 @@ function removeGrid() {
 resetButton.addEventListener('click', function() {
   const squares = document.querySelectorAll('.grid-square');
   squares.forEach(square => {
-    square.classList.remove('active');
+    square.style.backgroundColor = 'white';
   });
+  eraseMode = false;
 });
 
-function eraseSquare() {
-  const squares = document.querySelectorAll('.grid-square');
-  squares.forEach((square) => {
-      square.addEventListener("mouseover", () => {
-          square.style.backgroundColor = "white";
-      });
-  });
-}
-
 eraserButton.addEventListener("click", () => {
-  eraseSquare();
+  eraseMode = !eraseMode;
 });
