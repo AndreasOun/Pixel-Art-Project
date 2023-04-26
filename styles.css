@@ -74,6 +74,36 @@ body {
     cursor: pointer;
 }
 
+.color-picker {
+    margin-bottom: 10px;
+  }
+  
+.color-picker-label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+input[type="color"] {
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  
+  input[type="color"]::-webkit-color-swatch {
+    border-radius: 50%;
+  }
+
+
 @media only screen and (max-width: 768px) {
     #container {
         width: 100%;

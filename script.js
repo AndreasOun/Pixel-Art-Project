@@ -5,8 +5,12 @@ const btn32 = document.querySelector('#btn-32');
 const btn64 = document.querySelector('#btn-64');
 const resetButton = document.getElementById('btn-reset');
 const eraserButton = document.getElementById('btn-eraser');
+const colorPicker = document.getElementById('color-picker');
+const grid = document.getElementById('grid');
+
 
 let eraseMode = false;
+let currentColor = '#000000'; // default color is black
 
 // create initial grid
 createGrid(16);
@@ -30,6 +34,11 @@ function createGrid(size) {
     // calculate size of each grid square based on container size and number of squares
     const squareSize = size === 16 ? 60 : size === 32 ? 30 : 15;
   
+    // update current color when color picker changes
+    colorPicker.addEventListener('input', (event) => {
+      currentColor = event.target.value;
+    });
+
     // set width and height of container based on number of squares and square size
     const containerSize = size * squareSize;
     container.style.width = `${containerSize}px`;
@@ -48,13 +57,13 @@ function createGrid(size) {
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach((square) => {
       square.addEventListener('mouseover', () => {
-        if (eraseMode) {
-          square.style.backgroundColor = 'white';
-        } else {
-          square.style.backgroundColor = 'black';
-        }
+          if (eraseMode) {
+              square.style.backgroundColor = 'white';
+          } else {
+              square.style.backgroundColor = currentColor;
+          }
       });
-    });
+  });
 }
 
 // function to remove old grid
@@ -76,3 +85,19 @@ resetButton.addEventListener('click', function() {
 eraserButton.addEventListener("click", () => {
   eraseMode = !eraseMode;
 });
+
+colorPicker.addEventListener('click', () => {
+  const colorInput = document.createElement('input');
+  colorInput.type = 'color';
+  colorInput.addEventListener('input', () => {
+    currentColor = colorInput.value;
+  });
+  colorInput.click();
+});
+
+grid.addEventListener('mousemove', (event) => {
+  if (event.target.className === 'cell') {
+    event.target.style.backgroundColor = currentColor;
+  }
+});
+
