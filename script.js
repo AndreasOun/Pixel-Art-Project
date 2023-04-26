@@ -7,7 +7,7 @@ const resetButton = document.getElementById('btn-reset');
 const eraserButton = document.getElementById('btn-eraser');
 const colorPicker = document.getElementById('color-picker');
 const grid = document.getElementById('grid');
-
+const downloadButton = document.getElementById('btn-download');
 
 let eraseMode = false;
 let currentColor = '#000000'; // default color is black
@@ -95,9 +95,31 @@ colorPicker.addEventListener('click', () => {
   colorInput.click();
 });
 
-grid.addEventListener('mousemove', (event) => {
-  if (event.target.className === 'cell') {
-    event.target.style.backgroundColor = currentColor;
-  }
-});
 
+
+function downloadImage() {
+  const canvas = document.createElement('canvas');
+  const size = parseInt(container.style.width);
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const squares = document.querySelectorAll('.grid-square');
+  squares.forEach((square) => {
+    const x = square.offsetLeft;
+    const y = square.offsetTop;
+    const color = window.getComputedStyle(square).backgroundColor;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, square.offsetWidth, square.offsetHeight);
+  });
+  const dataUrl = canvas.toDataURL('image/png');
+  const link = document.createElement('a');
+  link.download = 'pixel-art.png';
+  link.href = dataUrl;
+  link.click();
+}
+
+downloadButton.addEventListener('click', downloadImage);
+
+console.log(downloadImage)
