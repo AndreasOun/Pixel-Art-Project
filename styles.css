@@ -101,6 +101,23 @@ h1.pixel-art-header {
     font-weight: bold;
   }
 
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+.github-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
 input[type="color"] {
     appearance: none;
     width: 30px;
