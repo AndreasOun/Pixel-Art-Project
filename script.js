@@ -102,6 +102,7 @@ resetButton.addEventListener('click', function() {
 
 eraserButton.addEventListener("click", () => {
   eraseMode = !eraseMode;
+  eraserButton.classList.toggle('active');
 });
 
 colorPicker.addEventListener('click', () => {

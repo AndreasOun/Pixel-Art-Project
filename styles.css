@@ -109,7 +109,7 @@ h1.pixel-art-header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 3px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -120,6 +120,11 @@ h1.pixel-art-header {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+  }
+
+  #btn-eraser.active {
+    background-color: red;
+    color: white;
   }
 
 input[type="color"] {
