@@ -82,6 +82,16 @@ function createGrid(size) {
           isDragging = false;
       });
     });
+
+     // reset eraser mode and eraser button when grid is reset
+     resetButton.addEventListener('click', function() {
+      const squares = document.querySelectorAll('.grid-square');
+      squares.forEach(square => {
+        square.style.backgroundColor = 'white';
+      });
+      eraseMode = false;
+      eraserButton.classList.remove('active');
+    });
 }
 
 // function to remove old grid
