@@ -1,10 +1,10 @@
-# Sketch-JS-project
+# Pixel-Art-Maker
 
 Made with HTML5, CSS3 and Javascript! 
 
 # Features
 
-Users can create their owen pixel art! User can choose between 16x16, 32x32, 64x64 grid. User can choose color. User can reset the board. User can toggle eraser mode on and off. Users can download their pixel art! 
+Users can create their own pixel art! User can choose between 16x16, 32x32, 64x64 grid. User can choose color. User can reset the board. User can toggle eraser mode on and off. Users can download their pixel art! 
 
 # Live demo
 
